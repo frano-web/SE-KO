@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SE-KO Serwis - Profesjonalny serwis komputerowy w Jarocinie">
+  <meta name="keywords" content="serwis komputerowy, naprawa laptopów, Jarocin, IT">
+  <title>SE-KO Serwis</title>
+  <style>
+    /* Resetowanie domyślnych stylów */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+
+    /* Nagłówek i nawigacja */
+    header {
+      background-color: #1f1f1f;
+      padding: 20px 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .navbar {
+      list-style: none;
+      display: flex;
+    }
+
+    .navbar li {
+      margin: 0 15px;
+    }
+
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    .navbar a:hover {
+      color: #00bcd4;
+    }
+
+    .logo img {
+      height: 70px;
+    }
+
+    /* Sekcja Hero */
+    .hero {
+      background-color: #333;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #00bcd4;
+    }
+
+    /* Sekcja O Nas */
+    .about {
+      background-color: #242424;
+      padding: 50px 0;
+    }
+
+    .about h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      text-align: center;
+      font-size: 1.2rem;
+      width: 60%;
+      margin: 0 auto;
+    }
+
+    /* Usługi */
+    .services {
+      background-color: #1f1f1f;
+      padding: 50px 0;
+      opacity: 0; /* Domyślnie ukryta */
+      transition: opacity 1s ease-in-out;
+    }
+
+    .services.visible {
+      opacity: 1; /* Pokaż sekcję, gdy dodana zostanie klasa "visible" */
+    }
+
+    .services h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .service-cards {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 30px;
+      flex-wrap: wrap; /* Pozwala na elastyczne układanie kart */
+      gap: 20px; /* Odstęp między kartami */
+    }
+
+    .card {
+      background-color: #333;
+      border-radius: 8px;
+      overflow: hidden;
+      width: 30%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+    }
+
+    /* Kontakt */
+    .contact {
+      background-color: #242424;
+      padding: 50px 0;
+      text-align: center;
+    }
+
+    .contact-details a {
+      color: #fff;
+      background-color: #00bcd4;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 10px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-details a:hover {
+      background-color: #ff4081;
+    }
+
+    footer {
+      background-color: #1f1f1f;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    footer p {
+      color: #aaa;
+    }
+
+    /* Animacje */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Media queries dla responsywności */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .navbar li {
+        margin-bottom: 10px;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .about p {
+        width: 80%; /* Większa szerokość dla mniejszych ekranów */
+      }
+
+      .services h2 {
+        font-size: 2rem;
+      }
+
+      .service-cards {
+        justify-content: center;
+      }
+
+      .card {
+        width: 100%; /* Karty będą zajmować 100% szerokości na urządzeniach mobilnych */
+      }
+
+      .contact-details a {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+    }
+
+    /* Dla urządzeń mobilnych (smartfony w pionie) */
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .card-content h3 {
+        font-size: 1.2rem;
+      }
+
+      .card-content p {
+        font-size: 0.9rem;
+      }
+
+      footer p {
+        font-size: 0.9rem;
+      }
+    }
+	
+	
+	
+	@keyframes slideIn {
+  0% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.about, .contact {
+  animation: slideIn 1s ease-out;
+}
+
+
+
+
+
+
+.contact-details a:hover {
+  background-color: #ff4081;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="logoseko11.png" alt="SE-KO Serwis" id="logo">
+      </div>
+      <ul class="navbar">
+        <li><a href="#home">Strona Główna</a></li>
+        <li><a href="#about">O Nas</a></li>
+        <li><a href="#services">Usługi</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Witamy w SE-KO Serwis</h1>
+      <p>Profesjonalna naprawa komputerów, laptopów i urządzeń elektronicznych w Jarocinie</p>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>O Nas</h2>
+      <p>SE-KO Serwis to firma, która specjalizuje się w kompleksowej naprawie komputerów, laptopów oraz innych urządzeń elektronicznych. Działamy w Jarocinie, oferując szybkie i fachowe usługi. Naszym celem jest zapewnienie pełnej satysfakcji klientów poprzez profesjonalną obsługę i solidne wykonanie usług.</p>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Nasze Usługi</h2>
+      <div class="service-cards">
+        <div class="card">
+          <img src="service1.jpg" alt="Naprawa komputerów">
+          <div class="card-content">
+            <h3>Naprawa komputerów</h3>
+            <p>Profesjonalna naprawa komputerów stacjonarnych, usuwanie wirusów, modernizacja sprzętu.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="service2.jpg" alt="Naprawa laptopów">
+          <div class="card-content">
+            <h3>Naprawa laptopów</h3>
+            <p>Reperacja laptopów wszystkich marek, wymiana ekranów, naprawa płyt głównych, modernizacja sprzętu.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="service3.jpg" alt="Instalacja oprogramowania">
+          <div class="card-content">
+            <h3>Instalacja oprogramowania</h3>
+            <p>Instalacja systemów operacyjnych, programów biurowych oraz konfiguracja sieci.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Kontakt</h2>
+      <p>Znajdź nas w Jarocinie, ul. Wrocławska 79a. Możesz skontaktować się z nami telefonicznie lub mailowo.</p>
+      <div class="contact-details">
+        <a href="tel:+48535133531" class="contact-btn"><i class="fas fa-phone"></i> Zadzwoń</a>
+        <a href="mailto:info@se-ko.pl" class="contact-btn"><i class="fas fa-envelope"></i> Napisz e-mail</a>
+        <a href="https://www.google.com/maps?q=Wrocławska+79a,+Jarocin" class="contact-btn" target="_blank"><i class="fas fa-map-marker-alt"></i> Zobacz na mapie</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 SE-KO Serwis | Wszelkie prawa zastrzeżone.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Funkcja do sprawdzenia, kiedy element wejdzie w widoczny obszar
+    function isInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    }
+
+    // Funkcja do dodawania klasy animacji do sekcji
+    function handleScrollAnimation() {
+      const servicesSection = document.getElementById('services');
+
+      if (isInViewport(servicesSection)) {
+        servicesSection.classList.add('visible');
+      }
+    }
+
+    // Wywołanie funkcji przy przewijaniu strony
+    window.addEventListener('scroll', handleScrollAnimation);
+  </script>
+</body>
+</html>
